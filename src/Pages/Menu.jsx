@@ -1,7 +1,7 @@
 const menuItems = [
-  { id: 1, name: "Burger", price: 120, image: "https://via.placeholder.com/150" },
-  { id: 2, name: "Pizza", price: 250, image: "https://via.placeholder.com/150" },
-  { id: 3, name: "Pasta", price: 180, image: "https://via.placeholder.com/150" },
+  { id: 1, name: "Burger", price: 120, image: "https://tse4.mm.bing.net/th?id=OIG3.k_aUxogvEZCye7qHTnAN&pid=ImgGn" },
+  { id: 2, name: "Pizza", price: 250, image: "https://tse4.mm.bing.net/th?id=OIG3.rhdnObyhG4jUZGksSNjU&pid=ImgGn" },
+  { id: 3, name: "Pasta", price: 180, image: "https://tse1.mm.bing.net/th?id=OIG2.wns8W9mpN62d2QGPPrZT&pid=ImgGn" },
 ];
 
 const Menu = ({ cart, setCart }) => {
