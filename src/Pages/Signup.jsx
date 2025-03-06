@@ -115,16 +115,6 @@ const Signup = () => {
             Create Account
           </button>
         </form>
-
-        <div className="mt-6 space-y-3">
-          <button className="w-full flex items-center justify-center bg-red-500 hover:bg-red-600 text-white font-semibold p-3 rounded-lg transition duration-300">
-            Sign Up with Google
-          </button>
-          <button className="w-full flex items-center justify-center bg-blue-700 hover:bg-blue-800 text-white font-semibold p-3 rounded-lg transition duration-300">
-            Sign Up with Facebook
-          </button>
-        </div>
-
         <p className="text-center text-gray-600 dark:text-gray-300 mt-4">
           Already have an account?{" "}
           <Link to="/login" className="text-blue-500 hover:underline">
