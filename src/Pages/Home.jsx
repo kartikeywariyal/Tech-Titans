@@ -20,21 +20,21 @@ const featuredDishes = [
   {
     id: 1,
     name: "Gourmet Burger",
-    price: "$18.99",
+    price: "₹80",
     image: "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg",
     rating: 4.9
   },
   {
     id: 2,
     name: "Truffle Pasta",
-    price: "$24.50",
+    price: "₹240",
     image: "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg",
     rating: 4.7
   },
   {
     id: 3,
     name: "Sushi Platter",
-    price: "$32.00",
+    price: "₹150",
     image: "https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg",
     rating: 4.8
   }
