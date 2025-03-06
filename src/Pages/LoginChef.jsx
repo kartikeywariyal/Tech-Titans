@@ -15,9 +15,7 @@ const LoginChef = () => {
     setError(""); 
     try {
       console.log({ email, password });
-      // Check against temporary credentials
       if (email === TEMP_EMAIL && password === TEMP_PASSWORD) {
-        // Redirect to Chef Dashboard
         window.location = "/chefDashboard";
       } else {
         throw new Error("Invalid credentials");
