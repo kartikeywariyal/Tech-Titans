@@ -5,6 +5,7 @@ import Home from './Pages/Home'
 import Navbar from './Components/Navbar'
 import Menu from "./Pages/Menu";
 import Cart from "./Pages/Cart";
+import About from "./Pages/About";
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/> }/>
         <Route path="/menu" element={<Menu/>}/>
+        <Route path="/about" element={<About/>}/>
       </Routes>
       </Router>
     </>
