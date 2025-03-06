@@ -100,14 +100,7 @@ const Home = () => {
             Savor Culinary Excellence
           </h1>
 
-          <div className="relative w-full max-w-lg mx-auto mb-6">
-            <input
-              type="text"
-              placeholder="Search for restaurants or dishes..."
-              className="w-full p-4 pl-12 rounded-full shadow-lg text-lg text-gray-800 border-2 border-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-500"
-            />
-            <FiSearch className="absolute left-4 top-4 text-yellow-500 text-xl" />
-          </div>
+         
 
           <div className="flex gap-4 justify-center">
             <Link

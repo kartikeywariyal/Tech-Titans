@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +12,7 @@ const Login = () => {
     console.log({ email, password }); // Correct way to log updated state
     setEmail("");
     setPassword("");
+    window.location = "/Menu";
   };
 
   return (

@@ -32,6 +32,7 @@ function App() {
         <Route path="/signup-chef" element={<SignupChef/>}/> 
         <Route path="/about" element={<About/>}/>
         <Route path="/chefDashboard" element={<ChefDashboard />} />
+        <Route path="/LoginChef" element={<LoginChef />} />
       </Routes>
       </Router>
     </>

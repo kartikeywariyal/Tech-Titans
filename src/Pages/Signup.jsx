@@ -1,19 +1,45 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("user"); // Default to user
+  const [message, setMessage] = useState("");
 
-  const submitHandler = (e) => {
+  const navigate = useNavigate();
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log({ firstName, lastName, email, password });
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassword("");
+
+    const userData = { firstName, lastName, email, password };
+
+    try {
+      const endpoint =
+        role === "chef"
+          ? "http://localhost:5000/api/auth/signup-chef"
+          : "http://localhost:5000/api/auth/signup";
+
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage("Signup successful! Redirecting...");
+        setTimeout(() => navigate("/login"), 1500);
+      } else {
+        setMessage(data.message || "Signup failed!");
+      }
+    } catch (error) {
+      setMessage("Signup failed. Try again.");
+      console.error("Error:", error);
+    }
   };
 
   return (
@@ -23,8 +49,9 @@ const Signup = () => {
           Create Your Account
         </h2>
 
+        {message && <p className="text-center text-red-500">{message}</p>}
+
         <form onSubmit={submitHandler} className="space-y-5">
-          {/* Name Input Fields */}
           <div className="flex gap-4">
             <input
               type="text"
@@ -44,7 +71,6 @@ const Signup = () => {
             />
           </div>
 
-          {/* Email Input */}
           <div>
             <input
               type="email"
@@ -56,7 +82,6 @@ const Signup = () => {
             />
           </div>
 
-          {/* Password Input */}
           <div>
             <input
               type="password"
@@ -68,7 +93,21 @@ const Signup = () => {
             />
           </div>
 
-          {/* Signup Button */}
+          {/* Role Selection */}
+          <div>
+            <label className="block text-gray-700 dark:text-gray-300 mb-2">
+              Sign up as:
+            </label>
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="w-full p-3 border rounded-lg text-lg bg-gray-100 dark:bg-gray-700 focus:ring-2 focus:ring-blue-400 dark:text-white"
+            >
+              <option value="user">User</option>
+              <option value="chef">Chef</option>
+            </select>
+          </div>
+
           <button
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold p-3 rounded-lg transition duration-300"
@@ -77,7 +116,6 @@ const Signup = () => {
           </button>
         </form>
 
-        {/* Social Signup Options */}
         <div className="mt-6 space-y-3">
           <button className="w-full flex items-center justify-center bg-red-500 hover:bg-red-600 text-white font-semibold p-3 rounded-lg transition duration-300">
             Sign Up with Google
@@ -87,19 +125,11 @@ const Signup = () => {
           </button>
         </div>
 
-        {/* Login Link */}
         <p className="text-center text-gray-600 dark:text-gray-300 mt-4">
           Already have an account?{" "}
           <Link to="/login" className="text-blue-500 hover:underline">
             Login here
           </Link>
-        </p>
-
-        {/* Privacy Notice */}
-        <p className="text-[10px] text-gray-500 dark:text-gray-400 mt-4">
-          This site is protected by reCAPTCHA and the{" "}
-          <span className="underline">Google Privacy Policy</span> and{" "}
-          <span className="underline">Terms of Service apply</span>.
         </p>
       </div>
     </div>

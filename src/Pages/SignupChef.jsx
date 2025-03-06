@@ -1,30 +1,51 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignupChef = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  const submitHandler = (e) => {
+  const navigate = useNavigate(); // React Router for navigation
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log({ firstName, lastName, email, password });
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassword("");
+
+    const chefData = { firstName, lastName, email, password };
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/signup-chef", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(chefData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage("Signup successful! Redirecting...");
+        setTimeout(() => navigate("/login-chef"), 1500);
+      } else {
+        setMessage(data.message || "Signup failed!");
+      }
+    } catch (error) {
+      setMessage("Signup failed. Try again.");
+      console.error("Error:", error);
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 p-6">
       <div className="bg-white dark:bg-gray-800 shadow-xl rounded-lg p-8 w-full max-w-md md:max-w-lg lg:max-w-xl">
         <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-6">
-          Create Your Account
+          Create Chef Account
         </h2>
 
+        {message && <p className="text-center text-red-500">{message}</p>}
+
         <form onSubmit={submitHandler} className="space-y-5">
-          {/* Name Input Fields */}
           <div className="flex gap-4">
             <input
               type="text"
@@ -44,7 +65,6 @@ const SignupChef = () => {
             />
           </div>
 
-          {/* Email Input */}
           <div>
             <input
               type="email"
@@ -56,7 +76,6 @@ const SignupChef = () => {
             />
           </div>
 
-          {/* Password Input */}
           <div>
             <input
               type="password"
@@ -68,7 +87,6 @@ const SignupChef = () => {
             />
           </div>
 
-          {/* Signup Button */}
           <button
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold p-3 rounded-lg transition duration-300"
@@ -77,17 +95,6 @@ const SignupChef = () => {
           </button>
         </form>
 
-        {/* Social Signup Options */}
-        <div className="mt-6 space-y-3">
-          <button className="w-full flex items-center justify-center bg-red-500 hover:bg-red-600 text-white font-semibold p-3 rounded-lg transition duration-300">
-            Sign Up with Google
-          </button>
-          <button className="w-full flex items-center justify-center bg-blue-700 hover:bg-blue-800 text-white font-semibold p-3 rounded-lg transition duration-300">
-            Sign Up with Facebook
-          </button>
-        </div>
-
-        {/* Login Link */}
         <p className="text-center text-gray-600 dark:text-gray-300 mt-4">
           Already have an account?{" "}
           <Link to="/login-chef" className="text-blue-500 hover:underline">
@@ -95,7 +102,6 @@ const SignupChef = () => {
           </Link>
         </p>
 
-        {/* Privacy Notice */}
         <p className="text-[10px] text-gray-500 dark:text-gray-400 mt-4">
           This site is protected by reCAPTCHA and the{" "}
           <span className="underline">Google Privacy Policy</span> and{" "}
