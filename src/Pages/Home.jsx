@@ -54,7 +54,7 @@ const testimonials = [
   }
 ];
 
-const getGreeting = () => {
+const Greeting = () => {
   const hour = new Date().getHours();
   if (hour < 12) return "Good Morning!";
   if (hour < 18) return "Good Afternoon!";
@@ -92,6 +92,34 @@ const Home = () => {
   ), []);
 
   return (
+<<<<<<< HEAD
+    <div
+      className="min-h-screen flex flex-col items-center text-center p-6 bg-cover bg-center relative"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
+      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      <div className="relative z-10 bg-white bg-opacity-0 p-10 rounded-lg shadow-lg w-full max-w-2xl">
+        <motion.h2
+          className="text-2xl font-semibold text-white mb-2 drop-shadow-lg"
+          animate={{ y: [10, 0], opacity: [0, 1] }}
+          transition={{ duration: 1 }}
+        >
+          {Greeting()}
+        </motion.h2>
+        <motion.h1
+          className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg"
+          animate={{ y: [10, 0], opacity: [0, 1] }}
+          transition={{ duration: 1 }}
+        >
+          Discover the best food & drinks!
+        </motion.h1>
+
+        <div className="relative w-full max-w-lg mx-auto mb-6">
+          <input
+            type="text"
+            placeholder="Search for restaurants or dishes..."
+            className="w-full p-4 pl-12 rounded-full shadow-lg text-lg text-gray-800 border-2 border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+=======
     <div className="min-h-screen flex flex-col items-center text-center relative overflow-hidden">
       {/* Hero Section */}
       <div className="w-full h-screen absolute">
@@ -102,6 +130,7 @@ const Home = () => {
               index === currentImageIndex ? "opacity-100" : "opacity-0"
             }`}
             style={{ backgroundImage: `url(${img})` }}
+>>>>>>> 61301b466182fbadc4bf2b03b83f0029d2ed567c
           />
         ))}
         <div className="absolute inset-0 bg-black bg-opacity-50" />

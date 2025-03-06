@@ -29,8 +29,8 @@ const Navbar = () => {
             <span className="mr-2">🛒</span>
             Cart
           </Link>
-          <Link to="/account" className="px-4 py-2 rounded-full border border-white hover:bg-white hover:text-gray-900 transition-all duration-300">
-            Sign In
+          <Link to="/login" className="px-4 py-2 rounded-full border border-white hover:bg-white hover:text-gray-900 transition-all duration-300">
+            Login
           </Link>
         </div>
 
@@ -55,7 +55,7 @@ const Navbar = () => {
             <span className="mr-2">🛒</span>
             Cart
           </Link>
-          <Link to="/account" className="py-2 hover:text-yellow-400" onClick={() => setIsMenuOpen(false)}>Sign In</Link>
+          <Link to="/login" className="py-2 hover:text-yellow-400" onClick={() => setIsMenuOpen(false)}>Login </Link>
         </div>
       )}
     </nav>
