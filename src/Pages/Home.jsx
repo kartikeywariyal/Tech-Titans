@@ -1,12 +1,58 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiArrowRight } from "react-icons/fi";
+import { 
+  FaUtensils, 
+  FaStar, 
+  FaPhoneAlt, 
+  FaHeart, 
+  FaQuoteLeft,
+  FaRegEnvelope
+} from "react-icons/fa";
 
 const backgroundImages = [
-  "https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://img.freepik.com/free-photo/top-view-meat-sauce-soup-with-potatoes-greens-dark-floor_140725-76779.jpg?t=st=1741258470~exp=1741262070~hmac=5ca8bdf145c1a181281a2c53bfcb867bff1f9e90b110a6bd2b1a282f0a75fc29&w=1380",
-  "https://img.freepik.com/free-photo/top-view-tasty-meat-soup-with-potatoes-seasonings-dark-desk_140725-76945.jpg?t=st=1741258571~exp=1741262171~hmac=6c91000a2920706d064e969002f9a7f2f9aeb59a974d271fbabea3f76154ce04&w=1380"
+  "https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg",
+  "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg",
+  "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg"
+];
+
+const featuredDishes = [
+  {
+    id: 1,
+    name: "Gourmet Burger",
+    price: "$18.99",
+    image: "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg",
+    rating: 4.9
+  },
+  {
+    id: 2,
+    name: "Truffle Pasta",
+    price: "$24.50",
+    image: "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg",
+    rating: 4.7
+  },
+  {
+    id: 3,
+    name: "Sushi Platter",
+    price: "$32.00",
+    image: "https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg",
+    rating: 4.8
+  }
+];
+
+const testimonials = [
+  {
+    id: 1,
+    text: "The best dining experience I've ever had! Every dish was a masterpiece.",
+    author: "Sarah Johnson",
+    role: "Food Blogger"
+  },
+  {
+    id: 2,
+    text: "Incredible flavors and impeccable service. Will definitely return!",
+    author: "Michael Chen",
+    role: "Restaurant Critic"
+  }
 ];
 
 const Greeting = () => {
@@ -18,14 +64,17 @@ const Greeting = () => {
 
 const Home = () => {
   const [backgroundImage, setBackgroundImage] = useState("");
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    setBackgroundImage(
-      backgroundImages[Math.floor(Math.random() * backgroundImages.length)]
-    );
+    const interval = setInterval(() => {
+      setCurrentImageIndex(prev => (prev + 1) % backgroundImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
+<<<<<<< HEAD
     <div
       className="min-h-screen flex flex-col items-center text-center p-6 bg-cover bg-center relative"
       style={{ backgroundImage: `url(${backgroundImage})` }}
@@ -52,16 +101,131 @@ const Home = () => {
             type="text"
             placeholder="Search for restaurants or dishes..."
             className="w-full p-4 pl-12 rounded-full shadow-lg text-lg text-gray-800 border-2 border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+=======
+    <div className="min-h-screen flex flex-col items-center text-center relative overflow-hidden">
+      {/* Hero Section */}
+      <div className="w-full h-screen absolute">
+        {backgroundImages.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ backgroundImage: `url(${img})` }}
+>>>>>>> 61301b466182fbadc4bf2b03b83f0029d2ed567c
           />
-          <FiSearch className="absolute left-4 top-4 text-orange-500 text-xl" />
+        ))}
+        <div className="absolute inset-0 bg-black bg-opacity-50" />
+      </div>
+
+      <div className="relative z-10 w-full flex flex-col items-center">
+        {/* Main Content */}
+        <div 
+          className="bg-white bg-opacity-10 p-8 md:p-12 rounded-3xl shadow-2xl w-full max-w-2xl backdrop-blur-lg mt-20 mx-4"
+        >
+          <h2 className="text-2xl font-semibold text-yellow-300 mb-2 drop-shadow-lg">
+            {getGreeting()}
+          </h2>
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">
+            Savor Culinary Excellence
+          </h1>
+
+          <div className="relative w-full max-w-lg mx-auto mb-6">
+            <input
+              type="text"
+              placeholder="Search for restaurants or dishes..."
+              className="w-full p-4 pl-12 rounded-full shadow-lg text-lg text-gray-800 border-2 border-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-500"
+            />
+            <FiSearch className="absolute left-4 top-4 text-yellow-500 text-xl" />
+          </div>
+
+          <div className="flex gap-4 justify-center">
+            <Link
+              to="/menu"
+              className="mt-4 px-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-semibold rounded-full shadow-xl hover:scale-105 transition-transform duration-300"
+            >
+              Explore Menu
+            </Link>
+            <Link
+              to="/reservations"
+              className="mt-4 px-6 py-3 border-2 border-yellow-400 text-yellow-300 font-semibold rounded-full shadow-xl hover:bg-yellow-500 hover:text-black transition-colors duration-300"
+            >
+              Book Table
+            </Link>
+          </div>
         </div>
 
-        <Link
-          to="/menu"
-          className="mt-8 px-6 py-3 bg-orange-500 text-white font-semibold text-lg rounded-full shadow-lg hover:bg-orange-600 transition-all duration-300 hover:scale-105"
-        >
-          Explore Menu
-        </Link>
+        {/* Features Grid */}
+        <div className="relative z-10 mt-12 grid grid-cols-1 md:grid-cols-4 gap-6 text-black text-center max-w-6xl px-4">
+          {[
+            { icon: <FaUtensils />, title: "Premium Cuisine", description: "Taste the best flavors from around the world.", color: "orange-300" },
+            { icon: <FaStar />, title: "Top Rated", description: "Only the best restaurants & chefs selected.", color: "yellow-400" },
+            { icon: <FaPhoneAlt />, title: "Easy Ordering", description: "Order your favorite meals in one click.", color: "green-400" },
+            { icon: <FaHeart />, title: "Customer Love", description: "Join thousands of happy food lovers.", color: "red-400" }
+          ].map((feature, index) => (
+            <div
+              key={index}
+              className="p-6 bg-white bg-opacity-20 rounded-2xl shadow-lg backdrop-blur-md hover:bg-opacity-30 transition-all duration-300"
+            >
+              <div className={`text-4xl mb-3 text-${feature.color}`}>
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p className="text-sm opacity-90">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+
+        {}
+        <section className="my-20 w-full max-w-6xl px-4">
+          <h2 className="text-3xl font-bold text-color mb-8">Signature Dishes</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredDishes.map((dish) => (
+              <div 
+                key={dish.id}
+                className="bg-white rounded-xl shadow-2xl overflow-hidden"
+              >
+                <img 
+                  src={dish.image} 
+                  alt={dish.name} 
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="text-xl font-bold">{dish.name}</h3>
+                    <span className="text-yellow-500 font-semibold">{dish.price}</span>
+                  </div>
+                  <div className="flex items-center text-sm">
+                    <FaStar className="text-yellow-400 mr-1" />
+                    <span>{dish.rating}</span>
+                    <span className="mx-2">|</span>
+                    <span className="text-gray-600">15 reviews</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="my-20 w-full bg-black bg-opacity-40 py-16">
+          <div className="max-w-4xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-black mb-12 text-center">What People Say</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {testimonials.map((testimonial) => (
+                <div 
+                  key={testimonial.id}
+                  className="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-lg"
+                >
+                  <FaQuoteLeft className="text-yellow-400 text-2xl mb-4" />
+                  <p className="text-black px-19 mb-4 italic">"{testimonial.text}"</p>
+                  <div className="text-yellow-300 px-10 font-bold">{testimonial.author}</div>
+                  <div className="text-sm px-8 text-black-300">{testimonial.role}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
