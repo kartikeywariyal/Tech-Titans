@@ -1,4 +1,7 @@
-const Cart=({cart=[]})=>(
+import React from 'react';
+import {Link} from 'react-router-dom';
+
+const Cart=({cart})=>(
     <div className="p-6">
         <h2 className="text-3xl font-bold mb-4">Your Cart</h2>
         {cart.length===0?<p>Your cart is empty.</p>:cart.map((item,index)=>(
