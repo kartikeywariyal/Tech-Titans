@@ -9,6 +9,7 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import LoginChef from "./Pages/LoginChef";
 import SignupChef from "./Pages/SignupChef";
+import About from "./Pages/About";
 
 function App() {
   
@@ -28,8 +29,9 @@ function App() {
         <Route path="/menu" element={<Menu/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        /* <Route path="/login-chef" element={<LoginChef/>}/>
+        <Route path="/login-chef" element={<LoginChef/>}/>
         <Route path="/signup-chef" element={<SignupChef/>}/> 
+        <Route path="/about" element={<About/>}/>
       </Routes>
       </Router>
     </>

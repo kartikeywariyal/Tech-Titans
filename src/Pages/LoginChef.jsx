@@ -60,7 +60,7 @@ const LoginChef = () => {
           New here?{" "}
           <Link to="/signup-chef" className="text-blue-500 hover:underline">
             Create an account
-          </Link>
+          </Link> 
         </p>
 
         {/* Captain Login Button */}
@@ -68,7 +68,7 @@ const LoginChef = () => {
           to="/login"
           className="block text-center bg-green-600 hover:bg-green-700 text-white font-semibold p-3 rounded-lg mt-6 transition duration-300"
         >
-          Login in as Costemer
+          Login in as Customer
         </Link>
       </div>
     </div>
