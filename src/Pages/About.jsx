@@ -67,7 +67,7 @@ const About = () => {
           </h1>
           
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Welcome to <span className="font-semibold text-orange-600">Food App</span>! We are passionate about transforming how you experience food delivery, connecting you with exceptional restaurants and mouth-watering cuisine from around your city.
+            Welcome to <span className="font-semibold text-orange-600">QuickBite</span>. We are passionate about transforming how you experience food delivery, connecting you with exceptional restaurants and mouth-watering cuisine from around your city.
           </p>
         </motion.div>
 
@@ -113,7 +113,7 @@ const About = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-gray-800 mb-3">The Talented Team Behind Food Court</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-3">The Talented Team Behind QuickBite</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Meet our dedicated professionals who make it all happen
           </p>
