@@ -13,10 +13,7 @@ import About from "./Pages/About";
 
 function App() {
   
-  const [cart, setCart] = useState([
-    { name: "Burger", price: 100, quantity: 1, image: "/images/burger.jpg" },
-    { name: "Pizza", price: 700, quantity: 2, image: "/images/pizza.jpg" }
-  ]);
+  const [cart, setCart] = useState([]);
   
   return (
     <>
@@ -25,7 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/> }/>
-        <Route path="/menu" element={<Menu/>}/>
+        <Route path="/menu" element={<Menu cart={cart} setCart={setCart}/>}/>
         <Route path="/menu" element={<Menu/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
