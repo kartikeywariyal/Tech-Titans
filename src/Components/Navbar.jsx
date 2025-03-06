@@ -11,7 +11,7 @@ const Navbar = () => {
         <Link to="/" className="text-xl font-bold flex items-center">
           <span className="text-2xl mr-2">🍽</span>
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-500">
-            FoodApp
+          QuickBite
           </span>
         </Link>
 

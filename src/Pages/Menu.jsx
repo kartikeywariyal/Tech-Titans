@@ -36,7 +36,7 @@ const Menu = ({ cart, setCart }) => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="min-h-screen bg-gradient-to-b from-amber-50 to-orange-50 py-16 px-4 sm:px-6">
       <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
         Our Delicious Menu
       </h2>
