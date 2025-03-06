@@ -32,6 +32,41 @@ const Cart = ({ cart, setCart }) => {
     const subtotal = getSubtotal();
     return Math.max(subtotal - discountAmount, 0);
   };
+  const handlePayment = () => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    script.onload = () => {
+      const options = {
+        key: "rzp_test_TEuqsRAqJY9qh2",
+        amount: getTotalPrice() * 100,
+        currency: "INR",
+        description: "Acme Corp",
+        image: "example.com/image/rzp.jpg",
+        prefill: {
+          email: "gaurav.kumar@example.com",
+          contact: "+919900000000",
+        },
+        handler: function (response) {
+          alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+        },
+        modal: {
+          ondismiss: function () {
+            if (confirm("Are you sure you want to close the form?")) {
+              console.log("Checkout form closed by the user");
+            } else {
+              console.log("Complete the Payment");
+            }
+          },
+        },
+      };
+
+      const rzp1 = new window.Razorpay(options);
+      rzp1.open();
+    };
+  };
 
   const applyDiscount = () => {
     if (discountCodes[discountCode]) {
@@ -115,6 +150,12 @@ const Cart = ({ cart, setCart }) => {
               </h3>
             )}
             <h3 className="text-2xl font-bold">Total: ₹{getTotalPrice()}</h3>
+            <button
+              onClick={handlePayment}
+              className="mt-4 px-10 py-3 bg-cyan-400 text-gray-900 text-lg font-semibold rounded-xl shadow-md hover:bg-cyan-300 transition-all transform hover:scale-105"
+            >
+              🚀 Proceed to Checkout
+            </button>
           </div>
         </>
       )}
