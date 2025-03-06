@@ -9,7 +9,7 @@ const backgroundImages = [
   "https://img.freepik.com/free-photo/top-view-tasty-meat-soup-with-potatoes-seasonings-dark-desk_140725-76945.jpg?t=st=1741258571~exp=1741262171~hmac=6c91000a2920706d064e969002f9a7f2f9aeb59a974d271fbabea3f76154ce04&w=1380"
 ];
 
-const getGreeting = () => {
+const Greeting = () => {
   const hour = new Date().getHours();
   if (hour < 12) return "Good Morning!";
   if (hour < 18) return "Good Afternoon!";
@@ -37,7 +37,7 @@ const Home = () => {
           animate={{ y: [10, 0], opacity: [0, 1] }}
           transition={{ duration: 1 }}
         >
-          {getGreeting()}
+          {Greeting()}
         </motion.h2>
         <motion.h1
           className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg"

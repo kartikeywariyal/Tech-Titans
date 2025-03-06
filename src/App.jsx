@@ -5,6 +5,10 @@ import Home from './Pages/Home'
 import Navbar from './Components/Navbar'
 import Menu from "./Pages/Menu";
 import Cart from "./Pages/Cart";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
+import LoginChef from "./Pages/LoginChef";
+import SignupChef from "./Pages/SignupChef";
 
 function App() {
   
@@ -21,6 +25,11 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/> }/>
         <Route path="/menu" element={<Menu/>}/>
+        <Route path="/menu" element={<Menu/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
+        /* <Route path="/login-chef" element={<LoginChef/>}/>
+        <Route path="/signup-chef" element={<SignupChef/>}/> 
       </Routes>
       </Router>
     </>
