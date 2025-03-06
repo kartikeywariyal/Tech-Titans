@@ -119,7 +119,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Features Grid */}
+        {}
         <div className="relative z-10 mt-12 grid grid-cols-1 md:grid-cols-4 gap-6 text-black text-center max-w-6xl px-4">
           {[
             { icon: <FaUtensils />, title: "Premium Cuisine", description: "Taste the best flavors from around the world.", color: "orange-300" },
@@ -141,7 +141,7 @@ const Home = () => {
         </div>
 
         {}
-        <section className="my-20 w-full max-w-6xl px-4">
+        <section className="my-20 w-full max-w-5xl px-10">
           <h2 className="text-3xl font-bold text-color mb-8">Signature Dishes</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {featuredDishes.map((dish) => (

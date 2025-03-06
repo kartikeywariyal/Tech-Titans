@@ -1,12 +1,11 @@
 import { useState } from "react";
-
 const Cart = ({ cart, setCart }) => {
   const [discountCode, setDiscountCode] = useState("");
   const [discountApplied, setDiscountApplied] = useState(false);
   const [discountAmount, setDiscountAmount] = useState(0);
 
   const discountCodes = {
-    SAVE10: 0.10,
+    SAVE10: 0.10, 
     SAVE15: 0.15,
     SAVE20: 0.20,
     SAVE25: 0.25,
@@ -47,11 +46,17 @@ const Cart = ({ cart, setCart }) => {
         description: "Acme Corp",
         image: "example.com/image/rzp.jpg",
         prefill: {
-          email: "gaurav.kumar@example.com",
+          email: "gaurav.kumar@gmail.com",
           contact: "+919900000000",
         },
         handler: function (response) {
           alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+          addOrder({
+            items: cart,
+            total: getTotalPrice(),
+            paymentId: response.razorpay_payment_id
+          });
+          setCart([]);
         },
         modal: {
           ondismiss: function () {

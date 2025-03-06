@@ -5,21 +5,39 @@ const LoginChef = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [data, setData] = useState({});
-
-  const submitHandler = (e) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const TEMP_EMAIL = "temp@example.com";
+  const TEMP_PASSWORD = "password123";
+  const submitHandler = async (e) => {
     e.preventDefault();
-    setData({ email, password }); // Store credentials
-    console.log({ email, password }); // Correct way to log updated state
-    setEmail("");
-    setPassword("");
+    setLoading(true);
+    setError(""); 
+    try {
+      console.log({ email, password });
+      // Check against temporary credentials
+      if (email === TEMP_EMAIL && password === TEMP_PASSWORD) {
+        // Redirect to Chef Dashboard
+        window.location = "/chefDashboard";
+      } else {
+        throw new Error("Invalid credentials");
+      }
+      setEmail("");
+      setPassword("");
+    } catch (err) {
+      setError("Login failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
       <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-md md:max-w-lg lg:max-w-xl">
         <h2 className="text-2xl font-bold text-center mb-6">Welcome Back!</h2>
 
-        <form onSubmit={submitHandler} className="space-y-5">
+        <form  className="space-y-5">
           {/* Email Input */}
           <div>
             <label className="block text-lg font-medium mb-2">Email</label>
@@ -48,7 +66,7 @@ const LoginChef = () => {
 
           {/* Login Button */}
           <button
-            type="submit"
+          onClick={submitHandler}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold p-3 rounded-lg transition duration-300"
           >
             Login

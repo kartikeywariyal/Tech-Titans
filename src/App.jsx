@@ -1,6 +1,7 @@
 import "./index.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";  
 import { useState } from "react";
+
 import Home from './Pages/Home'
 import Navbar from './Components/Navbar'
 import Menu from "./Pages/Menu";
@@ -10,6 +11,7 @@ import Signup from "./Pages/Signup";
 import LoginChef from "./Pages/LoginChef";
 import SignupChef from "./Pages/SignupChef";
 import About from "./Pages/About";
+import ChefDashboard from "./Pages/chefDashboard"; 
 
 function App() {
   
@@ -29,10 +31,11 @@ function App() {
         <Route path="/login-chef" element={<LoginChef/>}/>
         <Route path="/signup-chef" element={<SignupChef/>}/> 
         <Route path="/about" element={<About/>}/>
+        <Route path="/chefDashboard" element={<ChefDashboard />} />
       </Routes>
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
