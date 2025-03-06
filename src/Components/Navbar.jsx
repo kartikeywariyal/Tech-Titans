@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";  
 
-const Navbar = ({ cartCount }) => {
+const Navbar = () => {
   return (
     <nav className="p-4 bg-gray-900 text-white flex justify-between">
       <Link to="/" className="text-xl font-bold">FoodApp</Link>
+            <Link to="/menu" className="mr-4">Menu</Link>
+            <Link to="/cart">Cart</Link>
       <div>
-        <Link to="/menu" className="px-4">Menu</Link>
-        <Link to="/cart" className="px-4">Cart ({cartCount})</Link>
       </div>
     </nav>
   );
