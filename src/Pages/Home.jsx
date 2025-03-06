@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import { FiSearch, FiArrowRight } from "react-icons/fi";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { FiSearch } from "react-icons/fi";
 import { 
   FaUtensils, 
   FaStar, 
   FaPhoneAlt, 
   FaHeart, 
-  FaQuoteLeft,
-  FaRegEnvelope
+  FaQuoteLeft
 } from "react-icons/fa";
 
 const backgroundImages = [
@@ -63,7 +62,6 @@ const getGreeting = () => {
 };
 
 const Home = () => {
-  const [backgroundImage, setBackgroundImage] = useState("");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -72,6 +70,26 @@ const Home = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  const features = useMemo(() => [
+    { icon: <FaUtensils />, title: "Premium Cuisine", description: "Taste the best flavors from around the world.", color: "orange-300" },
+    { icon: <FaStar />, title: "Top Rated", description: "Only the best restaurants & chefs selected.", color: "yellow-400" },
+    { icon: <FaPhoneAlt />, title: "Easy Ordering", description: "Order your favorite meals in one click.", color: "green-400" },
+    { icon: <FaHeart />, title: "Customer Love", description: "Join thousands of happy food lovers.", color: "red-400" }
+  ], []);
+
+  const renderFeature = useCallback((feature, index) => (
+    <div
+      key={index}
+      className="p-6 bg-white bg-opacity-20 rounded-2xl shadow-lg backdrop-blur-md hover:bg-opacity-30 transition-all duration-300"
+    >
+      <div className={`text-4xl mb-3 text-${feature.color}`}>
+        {feature.icon}
+      </div>
+      <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+      <p className="text-sm opacity-90">{feature.description}</p>
+    </div>
+  ), []);
 
   return (
     <div className="min-h-screen flex flex-col items-center text-center relative overflow-hidden">
@@ -128,26 +146,9 @@ const Home = () => {
 
         {/* Features Grid */}
         <div className="relative z-10 mt-12 grid grid-cols-1 md:grid-cols-4 gap-6 text-black text-center max-w-6xl px-4">
-          {[
-            { icon: <FaUtensils />, title: "Premium Cuisine", description: "Taste the best flavors from around the world.", color: "orange-300" },
-            { icon: <FaStar />, title: "Top Rated", description: "Only the best restaurants & chefs selected.", color: "yellow-400" },
-            { icon: <FaPhoneAlt />, title: "Easy Ordering", description: "Order your favorite meals in one click.", color: "green-400" },
-            { icon: <FaHeart />, title: "Customer Love", description: "Join thousands of happy food lovers.", color: "red-400" }
-          ].map((feature, index) => (
-            <div
-              key={index}
-              className="p-6 bg-white bg-opacity-20 rounded-2xl shadow-lg backdrop-blur-md hover:bg-opacity-30 transition-all duration-300"
-            >
-              <div className={`text-4xl mb-3 text-${feature.color}`}>
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-sm opacity-90">{feature.description}</p>
-            </div>
-          ))}
+          {features.map(renderFeature)}
         </div>
 
-        {}
         <section className="my-20 w-full max-w-6xl px-4">
           <h2 className="text-3xl font-bold text-color mb-8">Signature Dishes</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -160,6 +161,7 @@ const Home = () => {
                   src={dish.image} 
                   alt={dish.name} 
                   className="w-full h-48 object-cover"
+                  loading="lazy"
                 />
                 <div className="p-6">
                   <div className="flex justify-between items-center mb-3">
