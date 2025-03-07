@@ -1,24 +1,46 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState({});
+  const [error, setError] = useState(""); // To store error message
+  const navigate = useNavigate();
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    setData({ email, password }); // Store credentials
-    console.log({ email, password }); // Correct way to log updated state
-    setEmail("");
-    setPassword("");
-    window.location = "/Menu";
+
+    try {
+      // Send login request to backend
+      const response = await axios.post("http://localhost:5000/api/auth/login", {
+        email,
+        password,
+      });
+
+      // Handle successful login
+      console.log(response.data);
+      setEmail("");
+      setPassword("");
+      navigate("/Menu"); // Navigate to Menu after successful login
+
+    } catch (error) {
+      // Handle error (invalid credentials or email not found)
+      if (error.response) {
+        setError(error.response.data.message); // Display error message from server
+      } else {
+        setError("An error occurred. Please try again later.");
+      }
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
       <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-md md:max-w-lg lg:max-w-xl">
         <h2 className="text-2xl font-bold text-center mb-6">Welcome Back!</h2>
+
+        {/* Display error message */}
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
         <form onSubmit={submitHandler} className="space-y-5">
           {/* Email Input */}

@@ -10,7 +10,7 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(400).json({ message: "User not found!" });
+      return res.status(400).json({ message: "Account does not exist!" });
     }
 
     if (user.password !== password) {
@@ -30,7 +30,7 @@ router.post("/login-chef", async (req, res) => {
     const chef = await Chef.findOne({ email });
 
     if (!chef) {
-      return res.status(400).json({ message: "Chef not found!" });
+      return res.status(400).json({ message: "Account does not exist!" });
     }
 
     if (chef.password !== password) {
