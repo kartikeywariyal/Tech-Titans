@@ -6,11 +6,12 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // To store error message
+  const [data,setData]=useState({});
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
+    
     try {
       // Send login request to backend
       const response = await axios.post("http://localhost:5000/api/auth/login", {
@@ -21,6 +22,8 @@ const Login = () => {
       // Handle successful login
       console.log(response.data);
       setEmail("");
+      localStorage.setItem("isLoggedIn","true");
+      localStorage.setItem("userEmail",email);
       setPassword("");
       navigate("/Menu"); // Navigate to Menu after successful login
 

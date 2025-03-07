@@ -26,7 +26,7 @@ const ChefDashboard = () => {
             <div className="w-64 bg-white shadow-md">
                 <div className="p-6 border-b">
                     <div className="flex items-center">
-                        <div className="mr-3 text-amber-600 text-xl font-bold">👨‍🍳</div>
+                        <div className="mr-3 text-amber-600 text-xl font-bold"></div>
                         <h1 className="text-xl font-bold text-gray-800">Chef's Table</h1>
                     </div>
                 </div>
@@ -41,16 +41,6 @@ const ChefDashboard = () => {
                          onClick={() => setActiveTab('menu')}>
                         <span className="mr-3 text-gray-600">🍽️</span>
                         <span className="text-gray-800">Menu</span>
-                    </div>
-                    <div className={`px-6 py-3 flex items-center cursor-pointer ${activeTab === 'analytics' ? 'bg-amber-50 border-r-4 border-amber-500' : 'hover:bg-gray-50'}`}
-                         onClick={() => setActiveTab('analytics')}>
-                        <span className="mr-3 text-gray-600">📈</span>
-                        <span className="text-gray-800">Analytics</span>
-                    </div>
-                    <div className={`px-6 py-3 flex items-center cursor-pointer ${activeTab === 'settings' ? 'bg-amber-50 border-r-4 border-amber-500' : 'hover:bg-gray-50'}`}
-                         onClick={() => setActiveTab('settings')}>
-                        <span className="mr-3 text-gray-600">⚙️</span>
-                        <span className="text-gray-800">Settings</span>
                     </div>
                 </nav>
             </div>
@@ -112,7 +102,7 @@ const ChefDashboard = () => {
                                 <div className="bg-white rounded-lg shadow p-6">
                                     <div className="flex items-center">
                                         <div className="p-3 rounded-full bg-green-100 mr-4">
-                                            <span className="text-xl text-green-600">✅</span>
+                                            <span className="text-xl text-green-600"></span>
                                         </div>
                                         <div>
                                             <p className="text-sm text-gray-500">Ready to Serve</p>
@@ -194,7 +184,7 @@ const ChefDashboard = () => {
                                     onClick={handleAddDish}
                                     className="px-4 py-2 bg-amber-600 text-white rounded-md flex items-center hover:bg-amber-700"
                                 >
-                                    <span className="mr-2">➕</span>
+                                    <span className="mr-2"></span>
                                     Add New Dish
                                 </button>
                             </div>

@@ -38,7 +38,7 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3
+        staggerChildren: 0.6
       }
     }
   };
@@ -79,7 +79,7 @@ const About = () => {
             className="bg-white rounded-xl shadow-xl p-8"
           >
             <div className="flex items-center mb-6">
-              <div className="p-3 bg-orange-100 rounded-lg mr-4">
+              <div className="p-3 bg-orange-200 rounded-lg mr-4">
                 <span className="text-3xl">🎯</span>
               </div>
               <h2 className="text-3xl font-bold text-gray-800">Our Mission</h2>
@@ -96,7 +96,7 @@ const About = () => {
             className="bg-white rounded-xl shadow-xl p-8"
           >
             <div className="flex items-center mb-6">
-              <div className="p-3 bg-orange-100 rounded-lg mr-4">
+              <div className="p-3 bg-orange-200 rounded-lg mr-4">
                 <span className="text-3xl">💫</span>
               </div>
               <h2 className="text-3xl font-bold text-gray-800">Our Vision</h2>
@@ -115,7 +115,7 @@ const About = () => {
         >
           <h2 className="text-4xl font-bold text-gray-800 mb-3">The Talented Team Behind QuickBite</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Meet our dedicated professionals who make it all happen
+            Meet our dedicated developers who make it all happen
           </p>
         </motion.div>
 
@@ -173,7 +173,6 @@ const About = () => {
           ))}
         </motion.div>
 
-      
       </div>
     </div>
   );

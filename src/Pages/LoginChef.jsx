@@ -7,16 +7,16 @@ const LoginChef = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // For redirecting after successful login
 
   const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
+    setError(""); // Reset error message
     try {
       console.log({ email, password });
 
-      
+      // Make an API request to verify the chef's credentials
       const response = await axios.post("http://localhost:5000/api/auth/login-chef", {
         email,
         password,
@@ -26,7 +26,7 @@ const LoginChef = () => {
       console.log(response.data);
       setEmail("");
       setPassword("");
-      navigate("/chefDashboard");
+      navigate("/chefDashboard"); // Redirect to Chef Dashboard after successful login
     } catch (err) {
       // Handle errors (invalid credentials, etc.)
       if (err.response) {
