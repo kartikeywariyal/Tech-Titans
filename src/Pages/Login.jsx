@@ -8,10 +8,16 @@ const Login = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setData({ email, password }); // Store credentials
-    console.log({ email, password }); // Correct way to log updated state
+    setData({ email, password });
+  
+    // Save login status in localStorage
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("userEmail", email); // Store user email if needed
+  
     setEmail("");
     setPassword("");
+  
+    // Redirect to Menu
     window.location = "/Menu";
   };
 

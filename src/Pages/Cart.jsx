@@ -3,6 +3,7 @@ const Cart = ({ cart, setCart }) => {
   const [discountCode, setDiscountCode] = useState("");
   const [discountApplied, setDiscountApplied] = useState(false);
   const [discountAmount, setDiscountAmount] = useState(0);
+  
 
   const discountCodes = {
     SAVE10: 0.10, 
@@ -56,7 +57,7 @@ const Cart = ({ cart, setCart }) => {
             total: getTotalPrice(),
             paymentId: response.razorpay_payment_id
           });
-          setCart([]);
+          setCart(() => []);          
         },
         modal: {
           ondismiss: function () {
@@ -92,7 +93,7 @@ const Cart = ({ cart, setCart }) => {
         <h2 className="text-3xl font-bold text-center mb-6">🛒 Your Cart</h2>
 
         {cart.length === 0 ? (
-          <p className="text-center text-lg text-gray-400">Your cart is empty! 🛍</p>
+          <p className="text-center text-lg text-gray-400">Your cart is empty! </p>
         ) : (
           <>
             <div className="space-y-6">
@@ -137,7 +138,7 @@ const Cart = ({ cart, setCart }) => {
               <input
                 type="text"
                 className="border-none bg-transparent text-white p-3 rounded-lg w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
-                placeholder="🎟 Enter discount code"
+                placeholder="Enter discount code"
                 value={discountCode}
                 onChange={(e) => setDiscountCode(e.target.value)}
               />
@@ -161,7 +162,7 @@ const Cart = ({ cart, setCart }) => {
                 onClick={handlePayment}
                 className="mt-4 px-10 py-3 bg-cyan-400 text-gray-900 text-lg font-semibold rounded-xl shadow-md hover:bg-cyan-300 transition-all transform hover:scale-105"
               >
-                🚀 Proceed to Checkout
+                Proceed to Checkout
               </button>
             </div>
           </>

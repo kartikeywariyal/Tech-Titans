@@ -44,15 +44,15 @@ const testimonials = [
   {
     id: 1,
     text: "The best dining experience I've ever had! Every dish was a masterpiece.",
-    author: "Sarah Johnson",
+    author: "Michael Smith",
     role: "Food Blogger"
   },
   {
     id: 2,
     text: "Incredible flavors and impeccable service. Will definitely return!",
-    author: "Michael Chen",
-    role: "Restaurant Critic"
-  }
+    author: "Pat Johnson",
+    role: "Restaurant Owner"
+  },
 ];
 
 const Greeting = () => {
@@ -97,7 +97,7 @@ const Home = () => {
             {Greeting()}
           </h2>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">
-            Savor Culinary Excellence
+          Enjoy amazing food !
           </h1>
 
          
@@ -174,15 +174,15 @@ const Home = () => {
                   key={testimonial.id}
                   className="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-lg"
                 >
-                  <FaQuoteLeft className="text-yellow-400 text-2xl mb-4" />
+                  <FaQuoteLeft className="text-yellow-800 text-2xl mb-2" />
                   <p className="text-black px-19 mb-4 italic">"{testimonial.text}"</p>
-                  <div className="text-yellow-300 px-10 font-bold">{testimonial.author}</div>
+                  <div className="text-red-800 px-10 font-bold">{testimonial.author}</div>
                   <div className="text-sm px-8 text-black-300">{testimonial.role}</div>
                 </div>
               ))}
             </div>
           </div>
-        </section>
+        </section>  
       </div>
     </div>
   );
